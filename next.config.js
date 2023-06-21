@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['iconos8.es']
+    domains: ['static.wikia.nocookie.net', 'p7.hiclipart.com']
   }
 }
 
