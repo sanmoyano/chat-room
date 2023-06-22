@@ -1,38 +1,46 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
+import Modal from '../modal'
+
 const Desktop = () => {
-  const time = new Date().getTime()
-  const date = new Date(time)
+  const [date, setDate] = useState(new Date())
+  const [isOpen, setIsOpen] = useState(false)
 
-  const day = date.getDate().toString().padStart(2, '0')
-  const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  const year = date.getFullYear().toString()
-  const hours = date.getHours().toString().padStart(2, '0')
-  const minutes = date.getMinutes().toString().padStart(2, '0')
+  const formattedDate = date.toLocaleDateString('en-AR', {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+  })
 
-  const formattedDate = `${hours}:${minutes} ${day}/${month}/${year}`
+  useEffect(() => {
+    setInterval(() => setDate(new Date()), 1000)
+  }, [])
+
+  const handleOpenModal = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
     <>
       <div className='absolute left-0'>
         <span title='double click!'>
-          <button className='w-24 h-24 hover:bg-blue-50 hover:bg-opacity-25'>
+          <button className='w-24 h-24 hover:bg-blue-50 hover:bg-opacity-25' type='button' onClick={handleOpenModal}>
             <div className='flex flex-col justify-between items-center space-y-2'>
-              <Image alt='windows' height={40} src='https://static.wikia.nocookie.net/logopedia/images/a/a5/MSN_Messenger_2000_%28Icon%29.png/revision/latest?cb=20230101195823' width={40} />
+              <Image alt='windows' height={40} src='/msn.png' width={40} />
               <p className='text-xs text-center'>Windows Messenger</p>
             </div>
           </button>
         </span>
+        <Modal display={isOpen} handleClose={handleOpenModal} />
       </div>
-      <div className='bg-blueWindows h-10 w-full flex items-center justify-between overflow-hidden'>
-        <div className='bg-greenWindows h-12 flex flex-row items-center w-[100px] justify-center rounded-r-[20px] shadow-inner drop-shadow-[2px_0_0_rgba(0,0,0,0.5)] border-[1px] border-[rgba(0,0,0,0.1)]'>
-          {/* corregir imagen */}
-          <Image alt='windows' height={35} src='' width={35} />
-          <p className='text-center font-bold text-xl drop-shadow-[3px_1px_0_rgba(0,0,0,1)] italic'>start</p>
+      <div className='bg-blueWindows h-10 w-full flex items-center justify-between overflow-hidden border-t-[3px] border-[rgba(255,255,255,0.25)] shadow-inner'>
+        <div className='bg-greenWindows h-12 flex flex-row items-center w-[100px] justify-center rounded-r-[20px] shadow-inner drop-shadow-[2px_0_0_rgba(0,0,0,0.5)] border-r-2 border-r-[rgba(0,0,0,.25)]'>
+          <Image alt='windows' height={30} src='/xp.png' width={30} />
+          <p className='text-center font-bold text-xl drop-shadow-[2px_1px_0_rgba(0,0,0,1)] italic'>start</p>
         </div>
-        <div className='bg-blueWindows h-full flex row-span-1 items-center w-[120px] justify-center drop-shadow-[1px_1px_2px_rgba(0,0,0,1)] border-[2px] border-[rgba(255,255,255,0.25)]'>
-          <Image alt='windows' height={24} src='https://static.wikia.nocookie.net/logopedia/images/a/a5/MSN_Messenger_2000_%28Icon%29.png/revision/latest?cb=20230101195823' width={24} />
+        <div className='bg-blueWindows h-full flex row-span-1 items-center w-[120px] justify-center drop-shadow-[1px_1px_3px_rgba(0,0,0,1)] border-l-2  border-l-[rgba(255,255,255,.1)] shadow-inner'>
+          <Image alt='windows' height={24} src='/msn.png' width={24} />
           <p className='text-xs text-center'>{formattedDate}</p>
         </div>
       </div>

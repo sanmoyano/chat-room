@@ -16,7 +16,7 @@ export default function Home () {
   }
 
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between bg-[url(https://www.newegg.com/insider/wp-content/uploads/windows_xp_bliss-wide.jpg)] bg-center bg-cover'>
+    <main className='flex min-h-screen flex-col items-center relative justify-between bg-[url(https://www.newegg.com/insider/wp-content/uploads/windows_xp_bliss-wide.jpg)] bg-center bg-cover'>
       <div>
         <p>Sign in with Google Account</p>
         <button onClick={signIngWithGoogle}>Sign in with Google</button>
