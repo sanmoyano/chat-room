@@ -1,9 +1,19 @@
 import Image from 'next/image'
 import React from 'react'
+import { signInWithPopup } from 'firebase/auth'
+import Cookies from 'universal-cookie'
+
+import { auth, googleProvider } from './firebase/config'
+const cookies = new Cookies()
 
 const Login = () => {
+  const signIngWithGoogle = async () => {
+    // const result = await signInWithPopup(auth, googleProvider)
+    // cookies.set('auth-token', result.user.refreshToken)
+  }
+
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col min-h-full min-w-full items-center'>
       <div className='flex shadow-md shandow-inner items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100 p-2 border-violet-950 border-[1px] w-[100px] h-[100px] rounded-lg'>
         <Image alt='menssenger' height={100} src='/msn.png' width={100} />
       </div>
