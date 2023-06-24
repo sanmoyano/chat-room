@@ -6,15 +6,19 @@ import Cookies from 'universal-cookie'
 import { auth, googleProvider } from '../../firebase/config'
 const cookies = new Cookies()
 
-const Login = () => {
-  // const signInCustom = async () => {
-  //   const result = await
-  // }
+const Login = ({ setIsAuth, setUser }:{setIsAuth: (value: boolean) => void, setUser: (value: {}) => void}) => {
   const signIngWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider)
 
+      console.log(result)
+
+      setUser(result.user)
+
+      setIsAuth(true)
+
       cookies.set('auth-token', result.user.refreshToken)
+      cookies.set('user', result.user)
     } catch (err) {
       console.log(err)
     }
