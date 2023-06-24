@@ -3,13 +3,21 @@ import React from 'react'
 import { signInWithPopup } from 'firebase/auth'
 import Cookies from 'universal-cookie'
 
-import { auth, googleProvider } from './firebase/config'
+import { auth, googleProvider } from '../../firebase/config'
 const cookies = new Cookies()
 
 const Login = () => {
+  // const signInCustom = async () => {
+  //   const result = await
+  // }
   const signIngWithGoogle = async () => {
-    // const result = await signInWithPopup(auth, googleProvider)
-    // cookies.set('auth-token', result.user.refreshToken)
+    try {
+      const result = await signInWithPopup(auth, googleProvider)
+
+      cookies.set('auth-token', result.user.refreshToken)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -33,7 +41,7 @@ const Login = () => {
         </form>
         <div className='flex flex-col items-center space-y-1 justify-center mt-4'>
           <p className='text-xs text-gray-900'>or</p>
-          <button className='text-violet-950 text-xs text-center font-bold underline'>Sign in with Google</button>
+          <button className='text-violet-950 text-xs text-center font-bold underline' onClick={signIngWithGoogle}>Sign in with Google</button>
         </div>
       </div>
     </div>

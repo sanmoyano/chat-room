@@ -1,6 +1,3 @@
-'use client'
-import React from 'react'
-
 import Desktop from './components/desktop'
 
 export default function Home () {

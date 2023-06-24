@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
@@ -41,7 +42,7 @@ const Desktop = () => {
         </div>
         <div className='bg-blueWindows h-full flex row-span-1 items-center w-[120px] justify-center drop-shadow-[1px_1px_3px_rgba(0,0,0,1)] border-l-2  border-l-[rgba(255,255,255,.1)] shadow-inner'>
           <Image alt='windows' height={24} src='/msn.png' width={24} />
-          <p className='text-xs text-center'>{formattedDate}</p>
+          {/* <p className='text-xs text-center'>{formattedDate}</p> */}
         </div>
       </div>
     </>
