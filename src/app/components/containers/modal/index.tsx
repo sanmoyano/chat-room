@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Draggable from 'react-draggable'
 
-const Drag = ({ children, display, close }: {children: React.ReactNode, display: boolean, close: ()=> void}) => {
+const Modal = ({ children, display, close }: {children: React.ReactNode, display: boolean, close: ()=> void}) => {
   const [activeDrags, setActiveDrags] = useState(0) /*eslint-disable-line*/
   const onStartDrag = () => {
     setActiveDrags((prev) => prev + 1)
@@ -30,4 +30,4 @@ const Drag = ({ children, display, close }: {children: React.ReactNode, display:
   )
 }
 
-export default Drag
+export default Modal

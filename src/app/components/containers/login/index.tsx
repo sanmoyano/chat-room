@@ -3,7 +3,7 @@ import React from 'react'
 import { signInWithPopup, User } from 'firebase/auth'
 import Cookies from 'universal-cookie'
 
-import { auth, googleProvider } from '../../firebase/config'
+import { auth, googleProvider } from '../../../firebase/config'
 const cookies = new Cookies()
 
 const Login = ({ setIsAuth, setUser }:{setIsAuth: (value: boolean) => void, setUser: (value: User) => void}) => {

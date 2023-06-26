@@ -1,13 +1,20 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Cookies from 'universal-cookie'
+import { User } from 'firebase/auth'
 
+// import Chat from '../chat'
 import Modal from '../modal'
-import Chat from '../chat'
+import Login from '../login'
+import ChatsList from '../../chatsList'
+const cookies = new Cookies()
 
 const Desktop = () => {
   const [date, setDate] = useState(new Date())
   const [isOpen, setIsOpen] = useState(false)
+  const [user, setUser] = useState<User>(cookies.get('user'))
+  const [isAuth, setIsAuth] = useState(cookies.get('auth-token'))
 
   const formattedDate = date.toLocaleDateString('en-AR', {
     hour: 'numeric',
@@ -33,8 +40,12 @@ const Desktop = () => {
             </div>
           </button>
         </span>
-        <Modal display={isOpen} handleClose={handleOpenModal} />
-        <Chat />
+        <Modal close={handleOpenModal} display={isOpen}>
+          {!isAuth
+            ? <Login setIsAuth={setIsAuth} setUser={setUser} />
+            : <ChatsList user={user} />}
+        </Modal>
+        {/* <Chat /> */}
       </div>
       <div className='bg-blueWindows absolute bottom-0 h-10 w-full flex items-center justify-between overflow-hidden border-t-[3px] border-[rgba(255,255,255,0.25)] shadow-inner'>
         <div className='bg-greenWindows h-12 flex flex-row items-center w-[100px] justify-center rounded-r-[20px] shadow-inner drop-shadow-[2px_0_0_rgba(0,0,0,0.5)] border-r-2 border-r-[rgba(0,0,0,.25)]'>
