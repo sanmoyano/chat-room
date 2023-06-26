@@ -1,17 +1,15 @@
 import Image from 'next/image'
 import React from 'react'
-import { signInWithPopup } from 'firebase/auth'
+import { signInWithPopup, User } from 'firebase/auth'
 import Cookies from 'universal-cookie'
 
 import { auth, googleProvider } from '../../firebase/config'
 const cookies = new Cookies()
 
-const Login = ({ setIsAuth, setUser }:{setIsAuth: (value: boolean) => void, setUser: (value: {}) => void}) => {
+const Login = ({ setIsAuth, setUser }:{setIsAuth: (value: boolean) => void, setUser: (value: User) => void}) => {
   const signIngWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider)
-
-      console.log(result)
 
       setUser(result.user)
 
@@ -25,7 +23,7 @@ const Login = ({ setIsAuth, setUser }:{setIsAuth: (value: boolean) => void, setU
   }
 
   return (
-    <div className='flex flex-col min-h-full min-w-full items-center'>
+    <div className='flex flex-col min-h-full min-w-full items-center mt-10'>
       <div className='flex shadow-md shandow-inner items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100 p-2 border-violet-950 border-[1px] w-[100px] h-[100px] rounded-lg'>
         <Image alt='menssenger' height={100} src='/msn.png' width={100} />
       </div>
