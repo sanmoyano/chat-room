@@ -4,9 +4,10 @@ import { addDoc } from 'firebase/firestore'
 const Chat = () => {
   const [newMessage, setNewMessage] = useState('')
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (newMessage === '') return
-    await addDoc
+    // e.preventDefault()
+    // if (newMessage === '') return
+    // await addDoc
+    console.log('hola')
   }
 
   return (

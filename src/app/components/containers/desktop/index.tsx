@@ -4,10 +4,10 @@ import Image from 'next/image'
 import Cookies from 'universal-cookie'
 import { User } from 'firebase/auth'
 
-// import Chat from '../chat'
 import Modal from '../modal'
 import Login from '../login'
 import ChatsList from '../../chatsList'
+import Chat from '../chat'
 const cookies = new Cookies()
 
 const Desktop = () => {
@@ -15,6 +15,7 @@ const Desktop = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [user, setUser] = useState<User>(cookies.get('user'))
   const [isAuth, setIsAuth] = useState(cookies.get('auth-token'))
+  const [isOpenChat, setOpenChat] = useState(false)
 
   const formattedDate = date.toLocaleDateString('en-AR', {
     hour: 'numeric',
@@ -27,6 +28,10 @@ const Desktop = () => {
 
   const handleOpenModal = () => {
     setIsOpen(!isOpen)
+  }
+
+  const handleOpenChat = () => {
+    setOpenChat(!isOpenChat)
   }
 
   return (
@@ -44,6 +49,9 @@ const Desktop = () => {
           {!isAuth
             ? <Login setIsAuth={setIsAuth} setUser={setUser} />
             : <ChatsList user={user} />}
+        </Modal>
+        <Modal close={handleOpenChat} display={isOpenChat}>
+          <Chat />
         </Modal>
         {/* <Chat /> */}
       </div>
