@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 import Modal from '../modal'
+import Chat from '../chat'
 
 const Desktop = () => {
   const [date, setDate] = useState(new Date())
@@ -11,7 +12,6 @@ const Desktop = () => {
   const formattedDate = date.toLocaleDateString('en-AR', {
     hour: 'numeric',
     minute: 'numeric'
-    // second: 'numeric'
   })
 
   useEffect(() => {
@@ -34,6 +34,7 @@ const Desktop = () => {
           </button>
         </span>
         <Modal display={isOpen} handleClose={handleOpenModal} />
+        <Chat />
       </div>
       <div className='bg-blueWindows absolute bottom-0 h-10 w-full flex items-center justify-between overflow-hidden border-t-[3px] border-[rgba(255,255,255,0.25)] shadow-inner'>
         <div className='bg-greenWindows h-12 flex flex-row items-center w-[100px] justify-center rounded-r-[20px] shadow-inner drop-shadow-[2px_0_0_rgba(0,0,0,0.5)] border-r-2 border-r-[rgba(0,0,0,.25)]'>
