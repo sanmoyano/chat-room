@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { User } from 'firebase/auth'
 
 import GeneralChat from './generalChat'
 
-const ChatsList = ({ user } : {user: User}) => {
-  const [chat, setChat] = useState(null)
-  const chatInputRef = useRef(null)
+const ChatsList = ({ user, handleOpenChat } : {user: User, handleOpenChat: () => void}) => {
+  // const [chat, setChat] = useState(null)
+  // const chatInputRef = useRef(null)
 
   return (
     <>
@@ -25,10 +25,10 @@ const ChatsList = ({ user } : {user: User}) => {
         </div>
         <div className='w-full flex flex-col space-y-2'>
           <p className='text-black font-bold pl-2 pt-2 text-sm'>{`Conectados (${1})`}</p>
-          {chat
+          {/* {chat
             ? (
               <>
-                <GeneralChat />
+                <GeneralChat openChat={handleOpenChat} />
                 <div className='flex flex-col w-[200px]'>
                   <label>Create Chat</label>
                   <input ref={chatInputRef} />
@@ -38,7 +38,7 @@ const ChatsList = ({ user } : {user: User}) => {
               )
             : (
               <>
-                <GeneralChat />
+                <GeneralChat openChat={handleOpenChat} />
                 <p className='text-black font-bold pl-2 pt-2 text-sm'>Create Chat</p>
                 <div className='flex flex-col w-[200px]'>
                   <label>Create Chat</label>
@@ -46,8 +46,8 @@ const ChatsList = ({ user } : {user: User}) => {
                   <button onClick={() => setChat(chatInputRef?.current?.value)}>Enter chat</button>
                 </div>
               </>
-              )}
-
+              )} */}
+          <GeneralChat openChat={handleOpenChat} />
         </div>
       </div>
     </>

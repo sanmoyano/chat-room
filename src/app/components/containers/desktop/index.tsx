@@ -48,9 +48,9 @@ const Desktop = () => {
         <Modal close={handleOpenModal} display={isOpen}>
           {!isAuth
             ? <Login setIsAuth={setIsAuth} setUser={setUser} />
-            : <ChatsList user={user} />}
+            : <ChatsList handleOpenChat={handleOpenChat} user={user} />}
         </Modal>
-        <Modal close={handleOpenChat} display={isOpenChat}>
+        <Modal close={handleOpenChat} display={isOpenChat} style='top-[25%] left-[25%]'>
           <Chat />
         </Modal>
         {/* <Chat /> */}
