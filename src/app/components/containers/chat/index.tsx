@@ -29,18 +29,18 @@ const Chat = () => {
 
     setNewMessage('')
   }
-  const formatDate = (createAt: Timestamp) => {
-    const timestamp = createAt.toDate()
-    const options: Intl.DateTimeFormatOptions = {
-      hour: 'numeric',
-      minute: 'numeric',
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    }
+  // const formatDate = (createAt: Timestamp) => {
+  //   const timestamp = createAt?.toDate()
+  //   const options: Intl.DateTimeFormatOptions = {
+  //     hour: 'numeric',
+  //     minute: 'numeric',
+  //     day: '2-digit',
+  //     month: '2-digit',
+  //     year: 'numeric'
+  //   }
 
-    return timestamp.toLocaleString(undefined, options)
-  }
+  //   return timestamp.toLocaleString(undefined, options)
+  // }
 
   useEffect(() => {
     const queryMessages = query(messagesRef, orderBy('createAt'))
@@ -69,7 +69,7 @@ const Chat = () => {
             <div>
               <div className='flex flex-row items-baseline space-x-2'>
                 <p className='text-black font-bold text-[13px]'>{message.user}</p>
-                <p className='text-gray-500 font-extralight text-[9px]'>{`${formatDate(message.createAt)}`}</p>
+                {/* <p className='text-gray-500 font-extralight text-[9px]'>{`${formatDate(message.createAt)}`}</p> */}
               </div>
               <p className='text-black font-normal text-xs'>{message.text}</p>
             </div>
