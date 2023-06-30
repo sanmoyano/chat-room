@@ -53,7 +53,6 @@ const Desktop = () => {
         <Modal close={handleOpenChat} display={isOpenChat} style='top-[25%] left-[25%]'>
           <Chat />
         </Modal>
-        {/* <Chat /> */}
       </div>
       <div className='bg-blueWindows absolute bottom-0 h-10 w-full flex items-center justify-between overflow-hidden border-t-[3px] border-[rgba(255,255,255,0.25)] shadow-inner'>
         <div className='bg-greenWindows h-12 flex flex-row items-center w-[100px] justify-center rounded-r-[20px] shadow-inner drop-shadow-[2px_0_0_rgba(0,0,0,0.5)] border-r-2 border-r-[rgba(0,0,0,.25)]'>
