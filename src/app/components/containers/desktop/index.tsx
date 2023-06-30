@@ -10,17 +10,23 @@ import ChatsList from '../../chatsList'
 import Chat from '../chat'
 const cookies = new Cookies()
 
-const Desktop = () => {
-  const [date, setDate] = useState(new Date())
+const Desktop = ({ goFullScreen }:{goFullScreen: () => void}) => {
   const [isOpen, setIsOpen] = useState(false)
   const [user, setUser] = useState<User>(cookies.get('user'))
   const [isAuth, setIsAuth] = useState(cookies.get('auth-token'))
   const [isOpenChat, setOpenChat] = useState(false)
 
-  const formattedDate = date.toLocaleDateString('en-AR', {
+  const [date, setDate] = useState(new Date())
+
+  const dateString = date.toLocaleDateString('es-AR')
+  const timeString = date.toLocaleTimeString('es-AR', {
     hour: 'numeric',
     minute: 'numeric'
   })
+
+  useEffect(() => {
+    setInterval(() => setDate(new Date()), 1000)
+  }, [])
 
   useEffect(() => {
     setInterval(() => setDate(new Date()), 60000)
@@ -28,6 +34,7 @@ const Desktop = () => {
 
   const handleOpenModal = () => {
     setIsOpen(!isOpen)
+    goFullScreen()
   }
 
   const handleOpenChat = () => {
@@ -59,9 +66,13 @@ const Desktop = () => {
           <Image alt='windows' height={30} src='/xp.png' width={30} />
           <p className='text-center font-bold text-xl drop-shadow-[2px_1px_0_rgba(0,0,0,1)] italic'>start</p>
         </div>
-        <div className='bg-blueWindows h-full flex row-span-1 items-center w-[120px] justify-center drop-shadow-[1px_1px_3px_rgba(0,0,0,1)] border-l-2  border-l-[rgba(255,255,255,.1)] shadow-inner'>
+        <div className='bg-blueWindows h-full flex row-span-1 items-center w-[120px] justify-between px-2 drop-shadow-[1px_1px_3px_rgba(0,0,0,1)] border-l-2  border-l-[rgba(255,255,255,.1)] shadow-inner'>
           <Image alt='windows' height={24} src='/msn.png' width={24} />
-          <p className='text-xs text-center'>{formattedDate}</p>
+          <p className='text-[10px] absolute top-5 left-6'>{!isAuth ? '⛔' : '🟢'}</p>
+          <div>
+            <p className='text-xs text-center'>{timeString}</p>
+            <p className='text-xs text-center'>{dateString}</p>
+          </div>
         </div>
       </div>
     </>
