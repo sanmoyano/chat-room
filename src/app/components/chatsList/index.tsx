@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import { User } from 'firebase/auth'
 
