@@ -1,13 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { User } from 'firebase/auth'
 
 import GeneralChat from './generalChat'
 
 const ChatsList = ({ user, handleOpenChat } : {user: User, handleOpenChat: () => void}) => {
-  // const [chat, setChat] = useState(null)
-  // const chatInputRef = useRef(null)
-
   return (
     <>
       <div className='flex flex-col min-h-full min-w-full items-center overflow-hidden'>
