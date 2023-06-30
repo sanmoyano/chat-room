@@ -30,6 +30,9 @@ const Chat = () => {
     setNewMessage('')
   }
   const formatDate = (createAt: Timestamp) => {
+    if (!createAt) {
+      return ''
+    }
     const timestamp = createAt?.toDate()
     const options: Intl.DateTimeFormatOptions = {
       hour: 'numeric',
