@@ -29,9 +29,9 @@ const Chat = () => {
 
     setNewMessage('')
   }
-  const formatDate = (createAt) => {
+  const formatDate = (createAt: Timestamp) => {
     const timestamp = createAt.toDate()
-    const options = {
+    const options: Intl.DateTimeFormatOptions = {
       hour: 'numeric',
       minute: 'numeric',
       day: '2-digit',
