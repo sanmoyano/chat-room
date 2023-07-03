@@ -66,7 +66,9 @@ const Chat = () => {
   return (
     <div className='min-h-full p-4 flex flex-col justify-center space-y-4'>
       <div>
-        <p className='text-black text-xs font-normal p-1'>¡Bienvenidos! Este es nuestro proyecto de hobbie donde probamos herramientas como Firebase, React, Next.js y Tailwind CSS. Únite, interactúa y diviértete con quien quiera que este del otro lado! Nos cuidemos con los comentarios, muchas gracias! </p>
+        <p className='text-black text-[10px] font-normal p-1'>¡Bienvenidos! Este es nuestro proyecto de hobbie donde probamos herramientas como Firebase, React, Next.js y Tailwind CSS. Únite, interactúa y diviértete con quien quiera que este del otro lado! Nos cuidemos con los comentarios, muchas gracias!
+          PD: Es una aplicación en tiempo real, así que compartila con quien quieras para probarla o simplemente alguien responderá...
+        </p>
       </div>
       <div className='mt-6 rounded-lg h-[70%] overflow-y-auto bg-[white] bg-opacity-80 border-[1px] border-violet-950'>
         {allMessages.map((message) => (
