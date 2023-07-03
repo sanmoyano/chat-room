@@ -31,14 +31,14 @@ const Login = ({ setIsAuth, setUser }:{setIsAuth: (value: boolean) => void, setU
         <form action='#' className='space-y-4'>
           <div>
             <label className='block mb-2 text-xs font-medium text-violet-950'>E-mail address:</label>
-            <input required className='bg-gray-50 border border-violet-950 text-gray-900 text-xs  focus:ring-blue-500 focus:border-blue-500 block w-full p-1' id='email' name='email' />
+            <input disabled required className='bg-gray-50 border border-violet-950 text-gray-900 text-xs  focus:ring-blue-500 focus:border-blue-500 block w-full p-1' id='email' name='email' />
           </div>
           <div>
             <label className='block mb-2 text-xs font-medium text-violet-950'>Password:</label>
-            <input required className='bg-gray-50 border border-violet-950 text-gray-900 text-xs  focus:ring-blue-500 focus:border-blue-500 block w-full p-1' id='password' name='password' type='password' />
+            <input disabled required className='bg-gray-50 border border-violet-950 text-gray-900 text-xs  focus:ring-blue-500 focus:border-blue-500 block w-full p-1' id='password' name='password' type='password' />
           </div>
           <div className='flex item-center justify-center'>
-            <button className='text-xs text-blue-800 font-bold bg-gray-100 rounded-sm border-violet-950 border-[2px] p-2 w-[80px]' type='submit'>Sign In</button>
+            <button disabled className='text-xs text-blue-800 font-bold bg-gray-100 rounded-sm border-violet-950 border-[2px] p-2 w-[80px]' type='submit'>Sign In</button>
           </div>
         </form>
         <div className='flex flex-col items-center space-y-1 justify-center mt-4'>
