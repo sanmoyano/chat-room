@@ -66,7 +66,7 @@ const Chat = () => {
   return (
     <div className='min-h-full p-4 flex flex-col justify-center space-y-4'>
       <div>
-        <p className='text-black text-[10px] font-normal p-1'>¡Bienvenidos! Este es nuestro proyecto de hobbie donde probamos herramientas como Firebase, React, Next.js y Tailwind CSS. Únite, interactúa y diviértete con quien quiera que este del otro lado! Nos cuidemos con los comentarios, muchas gracias!
+        <p className='text-black text-[10px] font-normal p-1'>¡Bienvenidos! Este es un proyecto de hobbie donde probamos herramientas como Firestore Database, React, Next.js y Tailwind CSS. Únite, interactúa y diviértete con quien quiera que este del otro lado! Nos cuidemos con los comentarios, muchas gracias!
           PD: Es una aplicación en tiempo real, así que compartila con quien quieras para probarla o simplemente alguien responderá...
         </p>
       </div>
