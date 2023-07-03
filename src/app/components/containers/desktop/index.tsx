@@ -20,7 +20,7 @@ export interface Chats {
 }
 const cookies = new Cookies()
 
-const Desktop = ({ goFullScreen }:{goFullScreen: () => void}) => {
+const Desktop = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenChat, setOpenChat] = useState(false)
   // const [openPersonal, setOpenPersonal] = useState(true)
@@ -51,7 +51,6 @@ const Desktop = ({ goFullScreen }:{goFullScreen: () => void}) => {
 
   const handleOpenModal = () => {
     setIsOpen(!isOpen)
-    // goFullScreen()
   }
 
   const handleOpenChat = () => {
