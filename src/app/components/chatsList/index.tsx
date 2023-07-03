@@ -31,8 +31,8 @@ const ChatsList = ({ user, handleOpenChat, chatList, createChat, chat, setChat, 
               <p className='text-xs font-normal text-gray-500'>(conectado)</p>
             </div>
             <input className='text-xs font-normal focus:outline-none w-full bg-transparent text-black' placeholder='<Escribe un mensaje personal>' />
+            <button className='text-xs focus:outline-none mt-5 disabled:opacity-50 text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] w-[100px] rounded-md' onClick={logOut}>signOut</button>
           </div>
-          <button className='text-xs focus:outline-none disabled:opacity-50 text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] w-[100px] rounded-md' onClick={logOut}>signOut</button>
         </div>
         <div className='w-full flex flex-col space-y-2'>
           <p className='text-black font-bold pl-2 pt-2 text-sm'>{`Chatrooms (${1})`}</p>
