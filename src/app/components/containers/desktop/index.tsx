@@ -23,11 +23,11 @@ const cookies = new Cookies()
 const Desktop = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenChat, setOpenChat] = useState(false)
-  // const [openPersonal, setOpenPersonal] = useState(true)
   const [user, setUser] = useState<User>(cookies.get('user'))
   const [isAuth, setIsAuth] = useState(cookies.get('auth-token'))
   const [chat, setChat] = useState<Chats>({ name: '', id: '' })
   const [chatList, setChatLits] = useState<Chats[]>([])
+  // const [openPersonal, setOpenPersonal] = useState(true)
   // const [selectedChat, setSelectedChat] = useState<Chats>({ name: '', id: '' })
   const [date, setDate] = useState(new Date())
 
@@ -61,12 +61,12 @@ const Desktop = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider)
 
+      cookies.set('auth-token', result.user.refreshToken)
+      cookies.set('user', result.user)
+
       setUser(result.user)
 
       setIsAuth(true)
-
-      cookies.set('auth-token', result.user.refreshToken)
-      cookies.set('user', result.user)
     } catch (err) {
       console.log(err)
     }
