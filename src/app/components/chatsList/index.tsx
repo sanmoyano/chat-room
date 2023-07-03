@@ -13,7 +13,7 @@ interface ChatsProps {
   createChat: (e: React.FormEvent<HTMLFormElement>) => void
   chat: Chats
   setChat: (chat: Chats) => void
-  openChat: (chat: Chats) => void
+  openChat?: (chat: Chats) => void
 }
 
 const ChatsList = ({ user, handleOpenChat, chatList, createChat, chat, setChat, openChat } : ChatsProps) => {
@@ -40,7 +40,7 @@ const ChatsList = ({ user, handleOpenChat, chatList, createChat, chat, setChat, 
           <p className='text-black font-bold pl-2 pt-2 text-sm'>{`Chats (${chatList.length})`}</p>
           <div className='flex flex-col'>
             {chatList?.map((chat) => (
-              <button key={chat.id} className='hover:bg-[rgba(255,255,255,0.3)]' type='button' onClick={() => openChat(chat)}>
+              <button key={chat.id} className='hover:bg-[rgba(255,255,255,0.3)]' type='button'>
                 <div className='flex flex-col px-2'>
                   <div className='flex flex-row items-center space-x-1'>
                     <div className='h-6 w-6 object-contain items-baseline flex-shrink-0'>

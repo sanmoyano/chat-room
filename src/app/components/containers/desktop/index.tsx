@@ -8,7 +8,7 @@ import Modal from '../modal'
 import Login from '../login'
 import ChatsList from '../../chatsList'
 import Chat from '../chat'
-import PersonalChat from '../chat/personalChat'
+// import PersonalChat from '../chat/personalChat'
 
 const crypto = require('crypto')
 
@@ -21,12 +21,12 @@ const cookies = new Cookies()
 const Desktop = ({ goFullScreen }:{goFullScreen: () => void}) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenChat, setOpenChat] = useState(false)
-  const [openPersonal, setOpenPersonal] = useState(true)
+  // const [openPersonal, setOpenPersonal] = useState(true)
   const [user, setUser] = useState<User>(cookies.get('user'))
   const [isAuth, setIsAuth] = useState(cookies.get('auth-token'))
   const [chat, setChat] = useState<Chats>({ name: '', id: '' })
   const [chatList, setChatLits] = useState<Chats[]>([])
-  const [selectedChat, setSelectedChat] = useState<Chats>({ name: '', id: '' })
+  // const [selectedChat, setSelectedChat] = useState<Chats>({ name: '', id: '' })
   const [date, setDate] = useState(new Date())
 
   const createChat = (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,16 +56,16 @@ const Desktop = ({ goFullScreen }:{goFullScreen: () => void}) => {
     setOpenChat(!isOpenChat)
   }
 
-  const handleSelectedChat = (chat: Chats) => {
-    if (chat) {
-      setSelectedChat(chat)
-      setOpenPersonal(true)
-    }
-  }
+  // const handleSelectedChat = (chat: Chats) => {
+  //   if (chat) {
+  //     setSelectedChat(chat)
+  //     setOpenPersonal(true)
+  //   }
+  // }
 
-  const closeModal = () => {
-    setOpenPersonal(false)
-  }
+  // const closeModal = () => {
+  //   setOpenPersonal(false)
+  // }
 
   useEffect(() => {
     setInterval(() => setDate(new Date()), 60000)
@@ -83,14 +83,14 @@ const Desktop = ({ goFullScreen }:{goFullScreen: () => void}) => {
         <Modal close={handleOpenModal} display={isOpen}>
           {!isAuth
             ? <Login setIsAuth={setIsAuth} setUser={setUser} />
-            : <ChatsList chat={chat} chatList={chatList} createChat={createChat} handleOpenChat={handleOpenChat} openChat={handleSelectedChat} setChat={setChat} user={user} />}
+            : <ChatsList chat={chat} chatList={chatList} createChat={createChat} handleOpenChat={handleOpenChat} setChat={setChat} user={user} />}
         </Modal>
         <Modal close={handleOpenChat} display={isOpenChat} style='top-[25%] left-[25%]'>
           <Chat />
         </Modal>
-        <Modal close={closeModal} display={openPersonal}>
+        {/* <Modal close={closeModal} display={openPersonal}>
           <PersonalChat chat={selectedChat} />
-        </Modal>
+        </Modal> */}
       </div>
       <div className='bg-blueWindows absolute bottom-0 h-10 w-full flex items-center justify-between overflow-hidden border-t-[3px] border-[rgba(255,255,255,0.25)] shadow-inner'>
         <div className='bg-greenWindows h-12 flex flex-row items-center w-[100px] justify-center rounded-r-[20px] shadow-inner drop-shadow-[2px_0_0_rgba(0,0,0,0.5)] border-r-2 border-r-[rgba(0,0,0,.25)]'>
