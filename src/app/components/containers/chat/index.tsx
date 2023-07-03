@@ -87,11 +87,9 @@ const Chat = () => {
       <div className='w-full h-[30%] bg-white bg-opacity-80 p-2 flex items-center rounded-lg border-[1px] border-violet-950 justify-between'>
         <form className='flex flex-row justify-between w-full h-full items-center space-x-2' onSubmit={handleSubmit}>
           <textarea className='text-black font-normal bg-transparent focus:outline-none resize-none text-xs h-full w-full' placeholder='Escribir mensaje...' value={newMessage} onChange={(e) => setNewMessage(e.target.value)} />
-          <div className='space-y-1'>
+          <div className='space-y-5'>
             <button className='text-xs text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] p-2 h-[50px] w-full rounded-md'>Enviar</button>
-            <span title='no todavía..'>
-              <button disabled className='text-xs focus:outline-none disabled:opacity-50 text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] p-2 h-[50px] rounded-md w-full'>Zumbido</button>
-            </span>
+            <button disabled className='text-xs focus:outline-none disabled:opacity-50 text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] p-2 h-[50px] rounded-md w-full'>Zumbido</button>
           </div>
         </form>
       </div>
