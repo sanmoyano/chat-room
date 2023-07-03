@@ -67,7 +67,7 @@ const Chat = () => {
     <div className='min-h-full p-4 flex flex-col justify-center space-y-4'>
       <div>
         <p className='text-black text-[10px] font-normal p-1'>¡Bienvenidos! Este es un proyecto de hobbie donde probamos herramientas como Firestore Database, React, Next.js y Tailwind CSS. Únite, interactúa y diviértete con quien quiera que este del otro lado! Nos cuidemos con los comentarios, muchas gracias!
-          PD: Es una aplicación en tiempo real, así que compartila con quien quieras para probarla o simplemente alguien responderá...
+          PD:Es una aplicación en tiempo real, así que compartila con quien quieras para probarla, o simplemente alguien responderá...
         </p>
       </div>
       <div className='mt-6 rounded-lg h-[70%] overflow-y-auto bg-[white] bg-opacity-80 border-[1px] border-violet-950'>
@@ -89,7 +89,9 @@ const Chat = () => {
           <textarea className='text-black font-normal bg-transparent focus:outline-none resize-none text-xs h-full w-full' placeholder='Escribir mensaje...' value={newMessage} onChange={(e) => setNewMessage(e.target.value)} />
           <div className='space-y-1'>
             <button className='text-xs text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] p-2 h-[50px] w-full rounded-md'>Enviar</button>
-            <button disabled className='text-xs focus:outline-none disabled:opacity-50 text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] p-2 h-[50px] rounded-md w-full'>Zumbido</button>
+            <span title='no todavía..'>
+              <button disabled className='text-xs focus:outline-none disabled:opacity-50 text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] p-2 h-[50px] rounded-md w-full'>Zumbido</button>
+            </span>
           </div>
         </form>
       </div>
