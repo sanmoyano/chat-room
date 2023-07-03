@@ -14,9 +14,10 @@ interface ChatsProps {
   chat: Chats
   setChat: (chat: Chats) => void
   openChat?: (chat: Chats) => void
+  logOut: () => void
 }
 
-const ChatsList = ({ user, handleOpenChat, chatList, createChat, chat, setChat, openChat } : ChatsProps) => {
+const ChatsList = ({ user, handleOpenChat, chatList, createChat, chat, setChat, openChat, logOut } : ChatsProps) => {
   return (
     <>
       <div className='flex flex-col min-h-full min-w-full items-center overflow-hidden'>
@@ -31,6 +32,7 @@ const ChatsList = ({ user, handleOpenChat, chatList, createChat, chat, setChat, 
             </div>
             <input className='text-xs font-normal focus:outline-none w-full bg-transparent text-black' placeholder='<Escribe un mensaje personal>' />
           </div>
+          <button className='text-xs focus:outline-none disabled:opacity-50 text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] w-[100px] rounded-md' onClick={logOut}>signOut</button>
         </div>
         <div className='w-full flex flex-col space-y-2'>
           <p className='text-black font-bold pl-2 pt-2 text-sm'>{`Chatrooms (${1})`}</p>

@@ -1,27 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-import { signInWithPopup, User } from 'firebase/auth'
-import Cookies from 'universal-cookie'
 
-import { auth, googleProvider } from '../../../firebase/config'
-const cookies = new Cookies()
-
-const Login = ({ setIsAuth, setUser }:{setIsAuth: (value: boolean) => void, setUser: (value: User) => void}) => {
-  const signIngWithGoogle = async () => {
-    try {
-      const result = await signInWithPopup(auth, googleProvider)
-
-      setUser(result.user)
-
-      setIsAuth(true)
-
-      cookies.set('auth-token', result.user.refreshToken)
-      cookies.set('user', result.user)
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
+const Login = ({ logIn }:{logIn: () => void}) => {
   return (
     <div className='flex flex-col min-h-full min-w-full items-center mt-10'>
       <div className='flex shadow-md shandow-inner items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100 p-2 border-violet-950 border-[1px] w-[100px] h-[100px] rounded-lg'>
@@ -43,7 +23,7 @@ const Login = ({ setIsAuth, setUser }:{setIsAuth: (value: boolean) => void, setU
         </form>
         <div className='flex flex-col items-center space-y-1 justify-center mt-4'>
           <p className='text-xs text-gray-900'>or</p>
-          <button className='text-violet-950 text-xs text-center font-bold underline' onClick={signIngWithGoogle}>Sign in with Google</button>
+          <button className='text-violet-950 text-xs text-center font-bold underline' onClick={logIn}>Sign in with Google</button>
         </div>
       </div>
     </div>

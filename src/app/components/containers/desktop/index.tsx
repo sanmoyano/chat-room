@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Cookies from 'universal-cookie'
-import { User } from 'firebase/auth'
+import { User, signOut, signInWithPopup } from 'firebase/auth'
+
+import { auth, googleProvider } from '@/app/firebase/config'
 
 import Modal from '../modal'
 import Login from '../login'
@@ -56,6 +58,32 @@ const Desktop = ({ goFullScreen }:{goFullScreen: () => void}) => {
     setOpenChat(!isOpenChat)
   }
 
+  const logIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider)
+
+      setUser(result.user)
+
+      setIsAuth(true)
+
+      cookies.set('auth-token', result.user.refreshToken)
+      cookies.set('user', result.user)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const logOut = async () => {
+    try {
+      await signOut(auth)
+      cookies.remove('auth-token')
+      cookies.remove('user')
+      setIsAuth(false)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   // const handleSelectedChat = (chat: Chats) => {
   //   if (chat) {
   //     setSelectedChat(chat)
@@ -82,8 +110,8 @@ const Desktop = ({ goFullScreen }:{goFullScreen: () => void}) => {
         </button>
         <Modal close={handleOpenModal} display={isOpen}>
           {!isAuth
-            ? <Login setIsAuth={setIsAuth} setUser={setUser} />
-            : <ChatsList chat={chat} chatList={chatList} createChat={createChat} handleOpenChat={handleOpenChat} setChat={setChat} user={user} />}
+            ? <Login logIn={logIn} />
+            : <ChatsList chat={chat} chatList={chatList} createChat={createChat} handleOpenChat={handleOpenChat} logOut={logOut} setChat={setChat} user={user} />}
         </Modal>
         <Modal close={handleOpenChat} display={isOpenChat} style='top-[25%] left-[25%]'>
           <Chat />
