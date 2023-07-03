@@ -57,8 +57,10 @@ const Desktop = ({ goFullScreen }:{goFullScreen: () => void}) => {
   }
 
   const handleSelectedChat = (chat: Chats) => {
-    setSelectedChat(chat)
-    setOpenPersonal(true)
+    if (chat) {
+      setSelectedChat(chat)
+      setOpenPersonal(true)
+    }
   }
 
   const closeModal = () => {

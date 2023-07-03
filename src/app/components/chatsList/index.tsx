@@ -57,15 +57,17 @@ const ChatsList = ({ user, handleOpenChat, chatList, createChat, chat, setChat, 
               </button>
             ))}
             <div className='flex flex-row items-center bg-greenWindow absolute p-2 bottom-0 space-x-2'>
-              <div className='flex flex-col space-y-1'>
-                <label className='text-black text-xs font-bold'>Create Chat:</label>
-                <form onSubmit={createChat}>
-                  <div className='flex flex-row space-x-2'>
-                    <input className='text-black text-xs h-6 border-black border-[1px] rounded-md font-normal p-2 w-[150px]' placeholder='enter chat name...' value={chat.name} onChange={(e) => setChat({ ...chat, name: e.target.value })} />
-                    <button className='text-xs focus:outline-none disabled:opacity-50 text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] w-[100px] rounded-md'>Crear Chat</button>
-                  </div>
-                </form>
-              </div>
+              <span title='proximamente'>
+                <div className='flex flex-col space-y-1'>
+                  <label className='text-gray-400 text-xs font-bold'>Create Chat:</label>
+                  <form onSubmit={createChat}>
+                    <div className='flex flex-row space-x-2'>
+                      <input disabled className='text-black text-xs h-6 border-black border-[1px] rounded-md font-normal p-2 w-[150px]' placeholder='enter chat name...' value={chat.name} onChange={(e) => setChat({ ...chat, name: e.target.value })} />
+                      <button disabled className='text-xs focus:outline-none disabled:opacity-50 text-blue-800 font-bold bg-gray-100 border-violet-950 border-[2px] w-[100px] rounded-md'>Crear Chat</button>
+                    </div>
+                  </form>
+                </div>
+              </span>
             </div>
           </div>
         </div>
